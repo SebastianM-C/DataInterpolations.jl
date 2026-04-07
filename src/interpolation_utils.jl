@@ -102,7 +102,7 @@ function munge_data(
     Tt = nonmissingtype(eltype(t))
 
     if Tu === eltype(u) && Tt === eltype(t)
-        if !issorted(check_sorted)
+        if !issorted(check_sorted; by = ForwardDiff.value)
             # there is likely an user error
             msg = "The $(sorted_arg_name[1]) argument (`$(sorted_arg_name[2])`), which is used for the interpolation domain, is not sorted."
             if issorted(u)
