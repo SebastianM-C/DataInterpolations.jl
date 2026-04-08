@@ -268,6 +268,12 @@ end
     @test_throws DataInterpolations.LeftExtrapolationError A(-1.0)
     @test_throws DataInterpolations.RightExtrapolationError A(11.0)
     @test_throws DataInterpolations.LeftExtrapolationError A([-1.0, 11.0])
+
+    # ForwardDiff gradient w.r.t. t with duplicate time points (issue #510)
+    test_tvals = [0.0, 1.0, 1.0, 5.0]
+    test_uvals = [1.0, 2.0, 4.0, 8.0]
+    f(tvals) = LinearInterpolation(test_uvals, tvals)(3.5)
+    @test_nowarn ForwardDiff.gradient(f, test_tvals)
 end
 
 @testset "Quadratic Interpolation" begin
