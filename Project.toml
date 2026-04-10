@@ -29,7 +29,7 @@ DataInterpolationsRegularizationToolsExt = "RegularizationTools"
 DataInterpolationsSparseConnectivityTracerExt = ["SparseConnectivityTracer", "FillArrays"]
 DataInterpolationsSymbolicsExt = "Symbolics"
 DataInterpolationsMakieExt = "Makie"
-DataInterpolationsMooncakeExt = "Mooncake"
+DataInterpolationsMooncakeExt = ["Mooncake", "ChainRulesCore"]
 
 [compat]
 AllocCheck = "0.2"
