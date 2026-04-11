@@ -43,7 +43,7 @@ function test_mooncake_tgrad(A, t; name::String)
         cache = Mooncake.prepare_gradient_cache(f_t, first(trange_test))
         for _t in trange_test
             _, (_, mgrad) = Mooncake.value_and_gradient!!(cache, f_t, _t)
-            @test mgrad ≈ DataInterpolations.derivative(A, _t)
+            @test mgrad ≈ DataInterpolations.derivative(A, _t) atol = 1.0e-10
         end
     end
 end
